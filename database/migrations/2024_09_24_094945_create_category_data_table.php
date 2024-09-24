@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('event_data', function (Blueprint $table) {
+        Schema::create('category_data', function (Blueprint $table) {
             $table->id(); // autoincrementing id
             $table->integer('master_id')->default(0);
             $table->string('name')->nullable();
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('event_data');
+        Schema::dropIfExists('category_data');
     }
 };

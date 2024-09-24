@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('event_masters', function (Blueprint $table) {
+        Schema::create('category_masters', function (Blueprint $table) {
             $table->id(); // Autoincrement ID
-            $table->string('event_name')->nullable(); // Event name, nullable
+            $table->string('name')->nullable(); // Event name, nullable
+            $table->text('icon_path')->nullable(); // Event name, nullable
             $table->integer('created_by')->default(0); // Creator ID, default 0
             $table->timestamps(); // created_at and updated_at
             $table->softDeletes(); // deleted_at, for soft deletes
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('event_masters');
+        Schema::dropIfExists('category_masters');
     }
 };
