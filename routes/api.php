@@ -7,5 +7,5 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::get('categoryList',[App\Http\Controllers\api\EventController::class, "categoryList"]);
-Route::get('categoryData/{id}',[App\Http\Controllers\api\EventController::class, "categoryData"]);
+Route::get('categoryList',[App\Http\Controllers\api\CategoryController::class, "categoryList"]);
+Route::get('categoryData/{id}',[App\Http\Controllers\api\CategoryController::class, "categoryData"]);

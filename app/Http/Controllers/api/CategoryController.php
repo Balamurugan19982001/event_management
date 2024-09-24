@@ -12,8 +12,8 @@ class CategoryController extends Controller
     public function categoryList(Request $request){
         try 
         {
-            $CategoryMaster = CategoryMaster::get();
-            return response()->json(['status' => 200,'success' => true, 'response' => 'Data Geted', 'data' => $CategoryMaster]);
+            $categoryMaster = CategoryMaster::get();
+            return response()->json(['status' => 200,'success' => true, 'response' => 'Data Geted', 'data' => $categoryMaster]);
         }
         catch (\Throwable $th) {
             return response()->json(['status' => 500,'success' => false, 'response' => 'Something Wrong', 'data' => null]);
@@ -24,11 +24,11 @@ class CategoryController extends Controller
         try 
         {
             $id = $request->id;
-            $CategoryData = CategoryData::where('event_id', $id)->get();
-            return response()->json(['status' => 200,'success' => true, 'response' => 'Data Geted', 'data' => $CategoryData]);
+            $categoryData = CategoryMaster::with(['categoryData'])->find($id);
+            return response()->json(['status' => 200,'success' => true, 'response' => 'Data Geted', 'data' => $categoryData]);
         }
         catch (\Throwable $th) {
-            return response()->json(['status' => 500,'success' => false, 'response' => 'Something Wrong', 'data' => null]);
+            return response()->json(['status' => 500,'success' => false, 'response' => 'Something Wrong', 'data' => $th]);
         }
     }
 }
