@@ -13,8 +13,9 @@ class ProductController extends Controller
         $category_id = $request->category_id;
         $product_id  = $request->product_id;
 
-        $productDetails = CategoryMaster::with(['categoryData' => function ($query) {
-                $query->with(['productFile']);
+        $productDetails = CategoryMaster::with(['categoryData' => function ($query) use($product_id) {
+                $query->where('id',$product_id)
+                ->with(['productFile']);
             }])
         ->find($category_id);
 

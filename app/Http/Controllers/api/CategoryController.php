@@ -24,7 +24,12 @@ class CategoryController extends Controller
         try 
         {
             $id = $request->id;
-            $categoryData = CategoryMaster::with(['categoryData'])->find($id);
+
+            $categoryData = CategoryMaster::with(['categoryData' => function ($query) {
+                $query->with(['productFile']);
+            }])
+            ->find($id);
+
             return response()->json(['status' => 200,'success' => true, 'response' => 'Data Geted', 'data' => $categoryData]);
         }
         catch (\Throwable $th) {
