@@ -14,4 +14,9 @@ class CategoryMaster extends Model
     {
         return $this->hasMany(CategoryData::class, 'master_id', 'id');
     }
+
+    public function productFile()
+    {
+        return $this->hasMany(ProductFiles::class, 'category_id', 'id');
+    }
 }

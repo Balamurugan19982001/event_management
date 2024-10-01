@@ -9,3 +9,4 @@ Route::get('/user', function (Request $request) {
 
 Route::get('categoryList',[App\Http\Controllers\api\CategoryController::class, "categoryList"]);
 Route::get('categoryData/{id}',[App\Http\Controllers\api\CategoryController::class, "categoryData"]);
+Route::get('productDetails/{category_id}/{product_id}',[App\Http\Controllers\api\ProductController::class, "productDetails"]);
